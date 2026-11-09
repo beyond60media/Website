@@ -1,0 +1,477 @@
+/* ==========================================================================
+   CSS Variables & Theming
+   ========================================================================== */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600&display=swap');
+
+:root {
+  --bg-color: #050505;
+  --text-main: #f0f4f8;
+  --text-muted: #8b98a5;
+  --accent-color: #3b82f6;
+  --accent-hover: #60a5fa;
+  --glass-bg: rgba(0, 0, 0, 0.6); /* Adjusted to match black theme */
+  --glass-border: rgba(255, 255, 255, 0.08);
+  --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+  --card-bg: rgba(255, 255, 255, 0.03);
+  --font-main: 'Outfit', sans-serif;
+  --transition-speed: 0.4s;
+}
+
+/* ==========================================================================
+   Global Reset & Typography
+   ========================================================================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-main);
+  background-color: var(--bg-color);
+  color: var(--text-main);
+  line-height: 1.6;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow-x: hidden;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  transition: color var(--transition-speed) ease;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+/* ==========================================================================
+   Global App Header Logo
+   ========================================================================== */
+.app-header-logo {
+  position: absolute;
+  top: 30px;
+  left: 50px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  line-height: 1;
+  z-index: 10000;
+  text-decoration: none;
+  font-size: 2rem;
+  font-weight: 800;
+  letter-spacing: 2px;
+  color: white;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.app-header-logo.wedding-theme {
+  color: black;
+}
+
+.app-header-logo:hover {
+  opacity: 0.85;
+}
+
+@media (max-width: 768px) {
+  .app-header-logo {
+    top: 20px;
+    left: 20px;
+    height: 32px;
+    font-size: 1.25rem;
+    letter-spacing: 1.5px;
+  }
+}
+
+
+/* ==========================================================================
+   Main Content Area
+   ========================================================================== */
+main {
+  flex: 1;
+  margin-top: 120px;
+  /* Offset for floating sticky header */
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+@media (max-width: 768px) {
+  main {
+    margin-top: 60px; /* Reduced from 120px for mobile */
+  }
+}
+
+/* Page Transition classes */
+.view-container {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 0.6s forwards ease-out;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ==========================================================================
+   Global Footer
+   ========================================================================== */
+.global-footer {
+  background: rgba(0, 0, 0, 0.3);
+  border-top: 1px solid var(--glass-border);
+  padding: 4rem 2rem 2rem;
+  margin-top: auto;
+}
+
+.footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 3rem;
+  margin-bottom: 3rem;
+}
+
+.footer-section h4 {
+  color: var(--text-muted);
+  text-transform: uppercase;
+  font-size: 0.9rem;
+  letter-spacing: 2px;
+  margin-bottom: 1.5rem;
+}
+
+.footer-link {
+  color: var(--text-main);
+  opacity: 0.8;
+  display: inline-block;
+  margin-bottom: 0.5rem;
+  transition: opacity var(--transition-speed) ease;
+}
+
+.footer-link:hover {
+  opacity: 1;
+  color: var(--accent-hover);
+}
+
+.global-footer .social-icons {
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+}
+
+.global-footer .social-icons a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.global-footer .social-icons svg {
+  transition: transform 0.3s ease;
+}
+
+.global-footer .social-icons a:hover svg {
+  transform: translateY(-3px);
+}
+
+@media (max-width: 768px) {
+  .global-footer .social-icons {
+    gap: 1.25rem;
+  }
+
+  .global-footer .social-icons a[aria-label="Instagram"] svg {
+    width: 24px;
+    height: 24px;
+  }
+
+  .global-footer .social-icons a[aria-label="YouTube"] svg {
+    width: 28px;
+    height: 28px;
+  }
+
+  .global-footer .social-icons a[aria-label="WhatsApp"] svg {
+    width: 24px;
+    height: 24px;
+  }
+}
+
+.footer-bottom {
+  text-align: center;
+  padding-top: 2rem;
+  border-top: 1px solid var(--glass-border);
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+
+/* ==========================================================================
+   View: Home
+   ========================================================================== */
+.home-hero {
+  position: relative;
+  min-height: 70vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 2rem;
+}
+
+/* Overlay for better text readability */
+.home-hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 800px;
+}
+
+.hero-title {
+  font-size: clamp(3rem, 8vw, 6rem);
+  font-weight: 300;
+  letter-spacing: -2px;
+  margin-bottom: 1rem;
+  color: #fff;
+}
+
+.hero-subtitle {
+  font-size: 1.2rem;
+  color: #fff;
+  max-width: 1600px;
+  margin: 0 auto;
+}
+
+/* ==========================================================================
+   View: Home Split CTA
+   ========================================================================== */
+.cta-split-section {
+  display: flex;
+  width: 100%;
+  height: 40vh;
+  /* Reduced height as requested */
+  min-height: 250px;
+  margin: 0;
+  padding: 0;
+}
+
+@media (max-width: 768px) {
+  .cta-split-section {
+    flex-direction: column;
+    height: 100vh;
+  }
+}
+
+.cta-split-btn {
+  flex: 1;
+  position: relative;
+  background-size: cover;
+  background-position: center;
+  text-decoration: none;
+  overflow: hidden;
+  display: block;
+}
+
+.cta-split-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.6s ease;
+}
+
+.cta-split-btn:hover .cta-split-overlay {
+  background: rgba(0, 0, 0, 0.1);
+}
+
+.cta-split-overlay h2 {
+  font-size: clamp(2rem, 5vw, 4rem);
+  color: white;
+  font-weight: 300;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  transition: transform 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.cta-split-btn:hover .cta-split-overlay h2 {
+  transform: scale(1.1);
+}
+
+/* ==========================================================================
+   View: Ads
+   ========================================================================== */
+.ads-intro {
+  padding: 8rem 2rem 4rem;
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.ads-intro h1 {
+  font-size: 3rem;
+  margin-bottom: 1.5rem;
+}
+
+.ads-intro p {
+  color: var(--text-muted);
+  font-size: 1.2rem;
+}
+
+.genre-list {
+  width: 100%;
+  max-width: 100%;
+  margin: 0 0 8rem 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  /* No gap for edge-to-edge cinematic feel */
+}
+
+.genre-banner {
+  background: var(--card-bg);
+  /* Remove border and border-radius for edge-to-edge feel */
+  border: none;
+  border-radius: 0;
+  overflow: hidden;
+  transition: all 0.5s ease;
+}
+
+.genre-header {
+  height: 60vh;
+  /* Large immersive image */
+  min-height: 500px;
+  background-size: cover;
+  background-position: center;
+  padding: 3rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-end;
+  /* Align content to the bottom */
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Gradient overlay to ensure text is readable */
+.genre-header::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0.2) 40%, transparent 100%);
+  z-index: 1;
+}
+
+/* We don't need abstract gradients anymore since we have images */
+.genre-header-content {
+  position: relative;
+  z-index: 2;
+  max-width: 600px;
+  text-align: left;
+}
+
+.genre-title {
+  font-size: 3.5rem;
+  font-weight: 400;
+  /* Lighter font weight for elegance */
+  line-height: 1.1;
+  margin-bottom: 1rem;
+}
+
+.genre-subtitle {
+  font-size: 0.95rem;
+  color: #ccc;
+  line-height: 1.5;
+}
+
+.expand-btn {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.05);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.4s ease, background 0.3s;
+  z-index: 2;
+  margin-bottom: 1rem;
+  /* Align slightly above bottom */
+}
+
+.genre-header:hover .expand-btn {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.genre-content {
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transition: max-height 0.6s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.4s ease;
+}
+
+.genre-banner.expanded .genre-content {
+  max-height: 1000px;
+  opacity: 1;
+}
+
+.genre-banner.expanded .expand-btn {
+  transform: rotate(180deg);
+}
+
+.genre-gallery {
+  padding: 0 2rem 3rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+}
+
+.gallery-item img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  border-radius: 12px;
+  transition: transform 0.5s ease;
+}
+
+.gallery-item {
+  overflow: hidden;
+  border-radius: 12px;
+}
+
+.gallery-item:hover img {
+  transform: scale(1.05);
+}

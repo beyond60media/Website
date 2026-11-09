@@ -1,0 +1,493 @@
+/* Home.css */
+
+.home-container {
+  width: 100vw;
+  font-family: 'Arial', sans-serif; 
+  overflow-x: hidden;
+  overflow-y: auto;
+  scroll-behavior: smooth;
+}
+
+/* Sections */
+.home-section {
+  position: relative;
+  width: 100vw;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+/* Background Video styling */
+.background-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0; /* Changed from -2 so it sits above the body background */
+}
+
+.video-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.2);
+  z-index: 1; /* Changed from -1 */
+}
+
+.dark-overlay {
+  background: rgba(0, 0, 0, 0.25); /* Reduced from 0.6 so Background2 is highly visible */
+}
+
+/* Header */
+.home-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 30px 50px;
+  z-index: 10;
+}
+
+.absolute-header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.logo {
+  font-size: 2rem;
+  font-weight: 800;
+  color: white;
+  letter-spacing: 2px;
+}
+
+.menu-icon {
+  cursor: pointer;
+}
+
+/* Main Content (Hero) */
+.home-main {
+  position: relative;
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+  width: 100%;
+  height: 100%;
+}
+
+.hero-text-container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 3vw; /* Changed from vh to vw so it scales with the text size */
+}
+
+/* Bold, blocky text similar to your reference */
+.hero-text-row {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  margin: 2vw 0; /* Changed from vh to vw */
+  z-index: 10;
+}
+
+.top-row {
+  align-items: flex-start; /* Aligns IDEAS to the top of WHERE */
+  gap: 15px;
+}
+
+.bottom-row {
+  align-items: flex-end; /* Aligns TAKE to the bottom of FLIGHT */
+  gap: 18px;
+}
+
+.word-where, .word-flight {
+  font-family: 'Anton', sans-serif;
+  font-size: 14vw; /* Decreased size */
+  color: white;
+  margin: 0;
+  line-height: 0.8;
+  letter-spacing: -2px;
+  text-transform: uppercase;
+  text-shadow: 0px 4px 15px rgba(0, 0, 0, 0.4);
+  transform: scaleY(1.3);
+  transform-origin: center;
+}
+
+.word-ideas {
+  font-family: 'Anton', sans-serif;
+  font-size: 7.5vw; 
+  color: white;
+  margin: 0;
+  line-height: 0.9;
+  letter-spacing: -1px;
+  text-transform: uppercase;
+  text-shadow: 0px 4px 15px rgba(0, 0, 0, 0.4);
+  transform: scaleY(1.3);
+  transform-origin: top;
+  margin-top: 3vw; /* Increased margin to push IDEAS down */
+}
+
+.word-take {
+  font-family: 'Anton', sans-serif;
+  font-size: 8vw; 
+  color: white;
+  margin: 0;
+  line-height: 0.9;
+  letter-spacing: -1px;
+  text-transform: uppercase;
+  text-shadow: 0px 4px 15px rgba(0, 0, 0, 0.4);
+  transform: scaleY(1.3);
+  transform-origin: bottom;
+  margin-bottom: 0vw; /* Decreased margin to push TAKE down closer to baseline */
+}
+
+/* The Tilted Red Pill Container */
+.red-pill-container {
+  position: absolute;
+  top: 52%;
+  left: 35%;
+  transform: translate(-50%, -50%) rotate(-12deg);
+  background-color: #ff0000;
+  border-radius: 30px;
+  display: flex;
+  align-items: center;
+  padding: 10px 25px;
+  box-shadow: 0px 10px 30px rgba(255, 0, 0, 0.5);
+  z-index: 20;
+  animation: shake-pill 5s infinite;
+}
+
+@keyframes shake-pill {
+  0%, 85%, 100% { transform: translate(-50%, -50%) rotate(-12deg); }
+  87% { transform: translate(-50%, -50%) rotate(-18deg) scale(1.05); }
+  89% { transform: translate(-50%, -50%) rotate(-6deg) scale(1.05); }
+  91% { transform: translate(-50%, -50%) rotate(-16deg) scale(1.05); }
+  93% { transform: translate(-50%, -50%) rotate(-8deg) scale(1.05); }
+  95% { transform: translate(-50%, -50%) rotate(-14deg) scale(1.05); }
+  97% { transform: translate(-50%, -50%) rotate(-10deg) scale(1.05); }
+}
+
+.pill-button {
+  color: white;
+  text-decoration: none;
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin: 0 13px;
+  transition: transform 0.2s ease;
+}
+
+.pill-button:hover {
+  transform: scale(1.1);
+}
+
+.pill-divider {
+  width: 2px;
+  height: 35px;
+  background-color: white;
+  opacity: 0.8;
+}
+
+/* About Section */
+.about-section {
+  justify-content: center;
+  align-items: center;
+  color: white;
+}
+
+.about-content {
+  position: relative;
+  z-index: 10;
+  max-width: 1400px; /* Increased span of the text block */
+  padding: 40px;
+  text-align: left;
+}
+
+.about-title {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 40px;
+}
+
+.crafting-text {
+  position: relative;
+  display: block;
+  font-size: 2rem;
+  font-weight: 300;
+  margin-bottom: -35px;
+  color: white !important;
+  text-shadow: 0px 2px 10px rgba(0, 0, 0, 0.7);
+  z-index: 2;
+}
+
+.beyond-text {
+  font-family: 'Anton', sans-serif;
+  font-size: 6rem;
+  font-weight: 900;
+  letter-spacing: 3px;
+  text-shadow: 0px 4px 15px rgba(0, 0, 0, 0.7);
+}
+
+.about-description p {
+  font-size: 1.5rem;
+  line-height: 2.0;
+  margin-bottom: 30px;
+  opacity: 0.95;
+  text-shadow: 0px 2px 8px rgba(0, 0, 0, 0.8);
+}
+
+.bold-outro {
+  font-size: 1.5rem;
+}
+
+.about-logos {
+  display: flex;
+  justify-content: center; /* Centers the logos horizontally */
+  align-items: center; /* Aligns them nicely if heights vary */
+  gap: 0px; /* Slightly more gap for larger logos */
+  margin-top: 50px;
+}
+
+.secondary-logo {
+  height: 200px; /* Made significantly larger and bigger than the other */
+  object-fit: contain;
+  margin-right: -30px; /* Pulls the right logo closer to offset invisible image borders */
+  margin-top: 10px;
+}
+
+.land-logo {
+  height: 200px; /* Larger than before, but smaller than secondary_logo */
+  object-fit: contain;
+  margin-left: -30px; /* Pulls this logo closer to the left one */
+}
+
+/* Footer */
+.home-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 30px 50px;
+  z-index: 10;
+}
+
+.absolute-footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.social-icons {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+
+.social-icons a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.social-icons svg {
+  cursor: pointer;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.social-icons a[aria-label="Instagram"] svg {
+  width: 18px;
+  height: 18px;
+}
+
+.social-icons a[aria-label="YouTube"] svg {
+  width: 22px;
+  height: 22px;
+}
+
+.social-icons a[aria-label="WhatsApp"] svg {
+  width: 19px;
+  height: 19px;
+}
+
+.social-icons svg:hover {
+  opacity: 0.7;
+}
+
+.social-handle {
+  color: white;
+  font-size: 1.1rem;
+  font-weight: 500;
+  letter-spacing: 1px;
+}
+
+/* Responsive adjustments for mobile */
+@media (max-width: 768px) {
+  .hero-text-container {
+    gap: 8vw;
+    width: 100%;
+    padding: 0 10px;
+    transform: translateY(-35px);
+  }
+
+  .hero-text-row {
+    margin: 0;
+    gap: 2.5vw;
+    white-space: nowrap;
+  }
+
+  .top-row {
+    align-items: baseline;
+    gap: 3vw;
+  }
+
+  .bottom-row {
+    align-items: baseline;
+    gap: 3vw;
+  }
+
+  .word-where, .word-flight {
+    font-size: 25vw;
+    line-height: 0.95;
+  }
+
+  .word-ideas, .word-take {
+    font-size: 15vw;
+    line-height: 0.95;
+  }
+
+  .word-ideas {
+    margin-top: 0;
+  }
+
+  .word-take {
+    margin-bottom: 0;
+  }
+
+  .red-pill-container {
+    top: 50%;
+    left: 36%;
+    padding: 2vw 3.5vw;
+    border-radius: 999px;
+    z-index: 25;
+  }
+
+  .pill-button {
+    font-size: 3.8vw;
+    margin: 0 1.5vw;
+  }
+
+  .pill-divider {
+    height: 3.5vw;
+  }
+  .home-header, .home-footer {
+    padding: 20px;
+  }
+  .beyond-text {
+    font-size: 4rem;
+  }
+  .about-content {
+    padding: 20px;
+  }
+  .about-description p {
+    font-size: 1.35rem;
+    line-height: 1.65;
+    margin-bottom: 16px;
+  }
+  .bold-outro {
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+  .secondary-logo {
+    height: 80px;
+    margin-right: -10px;
+  }
+  .land-logo {
+    height: 60px;
+    margin-left: -10px;
+  }
+  .social-handle {
+  color: white;
+  font-size: 0.6rem;
+  font-weight: 500;
+  letter-spacing: 1px;
+  }
+  .social-icons {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+  }
+  .social-icons a[aria-label="Instagram"] svg {
+    width: 14.5px;
+    height: 14.5px;
+  }
+  .social-icons a[aria-label="YouTube"] svg {
+    width: 17px;
+    height: 17px;
+  }
+  .social-icons a[aria-label="WhatsApp"] svg {
+    width: 15px;
+    height: 15px;
+  }
+
+}
+
+/* Stats Banner */
+.stats-banner {
+  margin-bottom: 80px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  font-family: 'Inter', sans-serif;
+  flex-wrap: wrap;
+  text-align: center;
+  padding: 0 20px;
+}
+
+.stats-text {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 1.5rem;
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-weight: 600;
+}
+
+.stats-number {
+  transform: scale(0.7);
+  transform-origin: center;
+  margin: 0 -20px;
+  display: flex;
+  align-items: center;
+}
+
+.stats-divider {
+  width: 2px;
+  height: 40px;
+  background-color: #ff2a2a;
+  margin: 0 50px; /* Increased from 15px to add significant distance */
+}
+
+@media (max-width: 900px) {
+  .stats-banner {
+    flex-direction: column;
+    gap: 10px;
+  }
+  .stats-divider {
+    width: 60px;
+    height: 2px;
+    margin: 25px 0; /* Increased distance for mobile */
+  }
+}

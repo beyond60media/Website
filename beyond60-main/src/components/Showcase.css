@@ -1,0 +1,163 @@
+/* Showcase Section Container */
+.showcase-section {
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 100px 20px;
+  box-sizing: border-box;
+  background-color: transparent; /* Inherits the pure black from index.css */
+  position: relative;
+  z-index: 10;
+}
+
+/* 2x2 Grid Layout */
+.showcase-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 30px;
+  align-items: start; /* Crucial for the stagger effect to work */
+}
+
+/* Square Card (1:1 Aspect Ratio) */
+.showcase-card {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  transition: transform 0.4s ease;
+  background-color: #222;
+  cursor: pointer;
+  border-radius: 30px;
+}
+
+/* Stagger the right column down */
+.showcase-card.staggered-down {
+  margin-top: 80px;
+}
+
+.showcase-card:hover {
+  transform: translateY(-8px);
+}
+
+/* Media Wrapper and Overlay */
+.showcase-media-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+.showcase-media {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.7s ease, opacity 0.5s ease;
+}
+
+/* Video is initially hidden */
+.showcase-video {
+  opacity: 0;
+  z-index: 2;
+}
+
+/* Show video on hover or when playing (e.g. mobile tap) */
+.showcase-card:hover .showcase-video,
+.showcase-card.is-playing .showcase-video {
+  opacity: 1;
+}
+
+.showcase-card:hover .showcase-media,
+.showcase-card.is-playing .showcase-media {
+  transform: scale(1.05);
+}
+
+.showcase-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.1) 0%,
+    rgba(0, 0, 0, 0.75) 100%
+  );
+  z-index: 3;
+}
+
+/* Top-Right Circle Indicator */
+.showcase-circle {
+  position: absolute;
+  top: 25px;
+  right: 25px;
+  width: 10px;
+  height: 10px;
+  background-color: #fff;
+  border-radius: 50%;
+  z-index: 10;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+}
+
+/* Top-Left Category Tag */
+.showcase-tag {
+  position: absolute;
+  top: 25px;
+  left: 25px;
+  z-index: 10;
+  color: #fff;
+  font-family: 'Arial', sans-serif;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.showcase-branding h2 {
+  margin: 0;
+  font-size: 2.2rem;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+  line-height: 1.1;
+  text-transform: capitalize;
+  white-space: pre-line; /* Allows \n to wrap text naturally like in your image */
+}
+
+
+
+.showcase-card:hover .showcase-pill {
+  transform: rotate(-10deg) scale(1.1);
+}
+
+.pill-red {
+  background-color: #e51d20;
+  color: #fff;
+}
+
+.pill-white {
+  background-color: #ffffff;
+  color: #000;
+}
+
+/* Responsive adjustments (Stacks them without stagger on mobile) */
+@media (max-width: 768px) {
+  .showcase-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  
+  .showcase-card.staggered-down {
+    margin-top: 0; 
+  }
+
+  .showcase-pill {
+    left: auto;
+    right: 20px;
+    bottom: 30px;
+  }
+}

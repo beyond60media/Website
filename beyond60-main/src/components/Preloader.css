@@ -1,0 +1,147 @@
+/* ==========================================================================
+   Bespoke Cinematic Preloader / Splash Screen
+   ========================================================================== */
+
+/* Full-Screen Dark Cinematic Overlay */
+.preloader-overlay {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: #050505;
+  z-index: 9999;
+  display: flex;
+  justify-content:center;
+  align-items: center;
+  opacity: 1;
+  transform: scale(1.5);
+  transition: 
+    opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  pointer-events: auto;
+}
+
+/* Subtle cinematic expansion & blur dissolve on exit */
+.preloader-overlay.preloader-fade-out {
+  opacity: 0;
+  transform: scale(1.025);
+  pointer-events: none;
+}
+
+/* Centered Column Layout */
+.preloader-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 280px;
+  max-width: 85vw;
+  gap: 18px;
+}
+
+/* 1. Studio Brand Label */
+.preloader-brand {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  font-family: var(--font-main, 'Outfit', 'Inter', sans-serif);
+  font-size: 0.685rem;
+  letter-spacing: 3.5px;
+  color: rgba(255, 255, 255, 0.65);
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.brand-dot {
+  width: 6px;
+  height: 6px;
+  background-color: #ff2a2a;
+  border-radius: 50%;
+  box-shadow: 0 0 10px rgba(255, 42, 42, 0.8);
+  animation: pulseBrandDot 2s ease-in-out infinite;
+}
+
+@keyframes pulseBrandDot {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.9;
+  }
+  50% {
+    transform: scale(1.3);
+    opacity: 0.5;
+  }
+}
+
+/* 2. Cinematic 16:9 Video Frame */
+.preloader-video-wrapper {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 
+    0 20px 50px rgba(0, 0, 0, 0.7),
+    0 0 0 1px rgba(255, 255, 255, 0.04);
+  background-color: #000;
+}
+
+.preloader-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.preloader-video-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0.1) 0%,
+    rgba(0, 0, 0, 0.35) 100%
+  );
+  pointer-events: none;
+}
+
+/* 3. Status Line & Percentage Counter */
+.preloader-status-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  font-family: 'SF Mono', 'Courier New', Courier, monospace;
+  font-size: 0.7rem;
+  color: rgba(255, 255, 255, 0.5);
+  letter-spacing: 1px;
+}
+
+.preloader-status-label {
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+}
+
+.preloader-counter {
+  color: #ffffff;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.5px;
+}
+
+/* 4. 2px Hairline Progress Bar */
+.preloader-bar-track {
+  width: 100%;
+  height: 2px;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 2px;
+  overflow: hidden;
+  position: relative;
+}
+
+.preloader-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0.7), #ffffff);
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.9);
+  border-radius: 2px;
+  transition: width 0.2s ease-out;
+}

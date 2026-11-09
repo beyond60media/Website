@@ -1,0 +1,373 @@
+/* Ads Showcase Container */
+.ads-showcase {
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 100px 20px 40px;
+  box-sizing: border-box;
+}
+
+/* 2x2 Grid Layout */
+.ads-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+  width: 100%;
+}
+
+/* Square Card */
+.ad-card {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  background-color: #000;
+  isolation: isolate;
+  transform: translateZ(0);
+  /* Apple/Vercel style easing curve */
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.ad-card:not(.is-active):hover {
+  transform: translateY(-8px) scale(1.01);
+  box-shadow: 0 24px 48px rgba(0, 0, 0, 0.25);
+}
+
+.ad-card.is-active {
+  cursor: pointer; /* Indicates you can click anywhere to close */
+}
+
+/* Media Wrapper and Overlay */
+.ad-media-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.ad-media {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  will-change: transform, filter;
+  transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1), filter 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.ad-card:not(.is-active):hover .ad-media {
+  transform: scale(1.05);
+}
+
+/* Base overlay gives readability to tags/buttons */
+.ad-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.1) 0%,
+    rgba(0, 0, 0, 0.5) 100%
+  );
+  z-index: 2;
+  transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Glassmorphic Blur Effect when active */
+.ad-card.is-active .ad-overlay {
+  background: rgba(0, 0, 0, 0.65);
+  -webkit-backdrop-filter: blur(20px);
+  backdrop-filter: blur(20px);
+}
+
+.ad-card.is-active .ad-media {
+  transform: scale(1.08); /* Slight zoom in background when blurred */
+  filter: blur(14px); /* Direct hardware-accelerated blur across all browsers */
+}
+
+/* Top-Left Tag */
+.ad-tag {
+  position: absolute;
+  top: 24px;
+  left: 24px;
+  z-index: 10;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  color: #fff;
+  font-family: 'Inter', 'Helvetica Neue', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  padding: 8px 16px;
+  border-radius: 40px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  transition: opacity 0.4s ease;
+}
+
+.ad-card.is-active .ad-tag {
+  opacity: 0; /* Hide tag when reading description for cleaner UI */
+  pointer-events: none;
+}
+
+/* Modern Content Reveal */
+.ad-content-reveal {
+  position: absolute;
+  top: 50%;
+  left: 10%;
+  right: 10%;
+  transform: translateY(-40%);
+  z-index: 10;
+  color: #fff;
+  pointer-events: none;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.ad-content-reveal h2 {
+  font-family: 'Inter', 'Helvetica Neue', sans-serif;
+  margin: 0;
+  font-size: 3.5rem;
+  font-weight: 800;
+  letter-spacing: -1.5px;
+  line-height: 1;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.ad-content-reveal p {
+  font-family: 'Inter', 'Helvetica Neue', sans-serif;
+  margin: 0;
+  font-size: 1.125rem;
+  line-height: 1.6;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.85);
+  max-width: 80%;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  transition-delay: 0.05s; /* Choreographed delay for the paragraph */
+}
+
+/* Show Content When Active */
+.ad-card.is-active .ad-content-reveal h2,
+.ad-card.is-active .ad-content-reveal p {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Shared Button Styles */
+.ad-cta-button {
+  position: absolute;
+  bottom: 32px;
+  right: 32px;
+  z-index: 10;
+  border: none;
+  background: rgba(255, 255, 255, 0.95);
+  color: #000;
+  font-family: 'Inter', 'Helvetica Neue', sans-serif;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+  text-decoration: none;
+  overflow: hidden;
+  /* Premium spring easing for size transition */
+  transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1); 
+}
+
+/* Initial Circular Button */
+.ad-cta-button.circle {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  font-weight: 700;
+  font-size: 0.85rem;
+  letter-spacing: 0.5px;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.ad-card:not(.is-active):hover .ad-cta-button.circle {
+  transform: scale(1.08);
+  background: #ffffff;
+}
+
+/* Active Pill Button */
+.ad-cta-button.pill {
+  width: 180px; /* Expands to fit text + icon */
+  height: 56px;
+  border-radius: 28px;
+  font-weight: 600;
+  font-size: 1rem;
+  padding: 0 24px;
+  justify-content: space-between;
+  transform-origin: right center;
+}
+
+.ad-cta-button.pill span {
+  white-space: nowrap;
+}
+
+.ad-cta-button.pill:hover {
+  transform: scale(1.05);
+  background: #fff;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.3);
+}
+
+.ad-cta-button.pill svg {
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.ad-cta-button.pill:hover svg {
+  transform: translateX(4px); /* Micro-interaction: arrow moves right */
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .ads-showcase {
+    padding: 80px 15px 30px;
+  }
+  .ads-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  .ad-content-reveal {
+    left: 8%;
+    right: 8%;
+  }
+  .ad-content-reveal h2 {
+    font-size: 2.2rem;
+  }
+  .ad-content-reveal p {
+    font-size: 1rem;
+    max-width: 100%;
+  }
+  .ad-cta-button.circle {
+    width: 80px;
+    height: 80px;
+  }
+  .ad-cta-button.pill {
+    width: 160px;
+    height: 50px;
+    font-size: 0.95rem;
+    bottom: 24px;
+    right: 24px;
+  }
+  .load-more-wrapper {
+    margin-top: 2.5rem;
+    margin-bottom: 1.5rem;
+  }
+  .load-more-btn {
+    padding: 12px 22px;
+    font-size: 0.875rem;
+  }
+}
+
+/* ==========================================================================
+   Load More Section & Button
+   ========================================================================== */
+.load-more-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 4rem;
+  margin-bottom: 2rem;
+  width: 100%;
+}
+
+.load-more-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  background: rgba(255, 255, 255, 0.05);
+  color: #f0f4f8;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 9999px;
+  padding: 14px 28px;
+  font-family: var(--font-main, 'Outfit', 'Inter', sans-serif);
+  font-size: 0.925rem;
+  font-weight: 500;
+  letter-spacing: 0.3px;
+  cursor: pointer;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.25);
+  transition: 
+    background 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+    border-color 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+    color 0.3s ease;
+}
+
+.load-more-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.28);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.4);
+  color: #ffffff;
+}
+
+.load-more-btn:active {
+  transform: translateY(0) scale(0.98);
+}
+
+.load-more-text {
+  font-weight: 500;
+}
+
+.load-more-counter {
+  font-size: 0.75rem;
+  padding: 3px 9px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 12px;
+  color: #94a3b8;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+.load-more-btn:hover .load-more-counter {
+  background: rgba(255, 255, 255, 0.14);
+  color: #f1f5f9;
+}
+
+.load-more-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #94a3b8;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), color 0.3s ease;
+}
+
+.load-more-btn:hover .load-more-icon {
+  transform: translateY(2px);
+  color: #ffffff;
+}
+
+/* Card entrance animation */
+@keyframes adCardEntrance {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.ad-card {
+  animation: adCardEntrance 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
+}

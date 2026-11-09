@@ -1,0 +1,249 @@
+/* ==========================================================================
+   About Page Styles
+   ========================================================================== */
+
+.about-page {
+  background-color: #000;
+  color: #fff;
+  padding: 80px 20px;
+  min-height: 100vh;
+  font-family: 'Roboto', 'Inter', sans-serif;
+  overflow-x: hidden;
+}
+
+.about-container {
+  max-width: 1300px;
+  margin: 0 auto;
+  text-align: left;
+  line-height: 1.8;
+  font-size: 1.1rem;
+}
+
+/* ==========================================================================
+   Founder Section (Top)
+   ========================================================================== */
+.about-founder-container {
+  display: flex;
+  gap: 40px;
+  margin-bottom: 100px;
+  flex-wrap: wrap;
+}
+
+/* Left Column: Portrait photo */
+.about-founder-portrait {
+  flex: 1 1 35%;
+  display: flex;
+  flex-direction: column;
+}
+
+.about-founder-portrait img {
+  width: 100%;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+/* Right Column: Landscape photo & intro text */
+.about-founder-main {
+  flex: 1 1 55%;
+  display: flex;
+  flex-direction: column;
+}
+
+.about-founder-landscape {
+  margin-bottom: 40px;
+}
+
+.about-founder-landscape img {
+  width: 100%;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.about-founder-text {
+  color: #ccc;
+  font-size: 1.1rem;
+  line-height: 1.8;
+}
+
+.about-founder-text p {
+  margin-bottom: 20px;
+}
+
+.about-highlight {
+  color: #fff;
+  font-style: italic;
+}
+
+/* ==========================================================================
+   Story Sections
+   ========================================================================== */
+.about-story-section {
+  margin-top: 100px;
+  clear: both;
+}
+
+.about-story-section.about-align-right {
+  text-align: right;
+}
+
+.about-img-right {
+  float: right;
+  width: 60%;
+  margin-left: 40px;
+  margin-bottom: 0px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.about-img-left {
+  float: left;
+  width: 55%;
+  margin-right: 40px;
+  margin-bottom: 10px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.about-story-text {
+  color: #ccc;
+}
+
+.about-story-text p {
+  margin-bottom: 8px;
+
+}
+
+.about-heading-lg {
+  font-size: 2.5rem;
+  margin: 0 0 5px 0;
+  font-weight: bold;
+  color: #fff;
+}
+
+.about-heading-hero {
+  font-size: 3.5rem;
+  margin: 0 0 30px 0;
+  font-weight: bold;
+  color: #fff;
+}
+
+.about-heading-md {
+  font-size: 2rem;
+  margin: 0 0 20px 0;
+  font-weight: bold;
+  color: #fff;
+}
+
+.about-heading-sm {
+  font-size: 1.5rem;
+  margin: 0 0 10px 0;
+  font-weight: bold;
+  color: #fff;
+}
+
+.about-quote-lg {
+  font-size: 2.5rem;
+  color: #fff;
+  font-weight: bold;
+}
+
+.about-quote-md {
+  font-size: 1.5rem;
+  color: #fff;
+}
+
+/* ==========================================================================
+   Mobile Responsive Layout (Phone screens <= 768px)
+   ========================================================================== */
+@media (max-width: 768px) {
+  .about-page {
+    padding: 20px 16px 60px;
+  }
+
+  /* 1. Hide the portrait photo on mobile */
+  .about-founder-portrait {
+    display: none !important;
+  }
+
+  .about-founder-container {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    margin-bottom: 60px;
+  }
+
+  .about-founder-main {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* 2. Photo (d j.jpg) FIRST on phone */
+  .about-founder-landscape {
+    order: 1;
+    margin-bottom: 24px;
+    width: 100%;
+  }
+
+  .about-founder-landscape img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 12px;
+  }
+
+  /* 3. Text SECOND on phone */
+  .about-founder-text {
+    order: 2;
+    margin-bottom: 40px;
+    text-align: left !important;
+  }
+
+  /* Story Sections on mobile: Description first, photo below */
+  .about-story-section {
+    display: flex !important;
+    flex-direction: column !important;
+    margin-top: 60px !important;
+    text-align: left !important;
+    clear: both !important;
+  }
+
+  .about-align-right {
+    text-align: left !important;
+  }
+
+  .about-story-text {
+    order: 1 !important;
+    width: 100% !important;
+    text-align: left !important;
+  }
+
+  .about-story-media {
+    order: 2 !important;
+    width: 100% !important;
+    margin-top: 24px !important;
+  }
+
+  .about-story-media img,
+  .about-img-right,
+  .about-img-left {
+    float: none !important;
+    width: 100% !important;
+    margin: 0 !important;
+    height: auto !important;
+    object-fit: cover;
+    border-radius: 12px;
+  }
+
+  .about-heading-lg {
+    font-size: 2rem;
+  }
+
+  .about-heading-hero {
+    font-size: 2.5rem;
+  }
+
+  .about-heading-md {
+    font-size: 1.75rem;
+  }
+}

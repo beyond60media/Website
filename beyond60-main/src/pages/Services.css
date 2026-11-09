@@ -1,0 +1,62 @@
+/* ==========================================================================
+   Services Page Styles
+   ========================================================================== */
+
+.services-page {
+  flex: 1;
+  width: 100%;
+  padding: 40px 20px;
+  box-sizing: border-box;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.masonry-services-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  align-content: flex-start;
+  gap: 80px 60px;
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.masonry-card {
+  text-decoration: none;
+  cursor: pointer;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.masonry-card:hover {
+  transform: translateY(-8px) scale(1.02);
+  color: #fff;
+}
+
+.masonry-block-height {
+  height: 90px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* Responsive adjustments for mobile */
+@media (max-width: 768px) {
+  .services-page {
+    padding: 40px 16px 30px;
+    justify-content: flex-start;
+  }
+
+  .masonry-services-container {
+    gap: 40px 20px;
+  }
+
+  .masonry-block-height {
+    height: 50px;
+  }
+}

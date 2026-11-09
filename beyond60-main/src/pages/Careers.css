@@ -1,0 +1,190 @@
+/* Careers.css */
+.careers-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px 20px 80px 20px;
+  min-height: 100vh;
+  text-align: center;
+  font-family: 'Roboto', 'Inter', sans-serif;
+  color: #fff;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+@media (max-width: 768px) {
+  .careers-page {
+    padding: 20px 16px 60px 16px;
+  }
+}
+
+.careers-hero-img {
+  max-width: 100%;
+  width: 400px;
+  margin-top: -30px;
+  margin-bottom: 40px;
+}
+
+.careers-headline-1 {
+  margin-bottom: 10px;
+  font-weight: 900;
+  font-size: 4.5rem;
+  text-align: left;
+  text-transform: uppercase;
+  margin-left: -250px;
+}
+
+.careers-headline-2 {
+  margin-bottom: 20px;
+  font-weight: normal;
+  font-size: 2.5rem;
+  text-align: right;
+  margin-left: 200px;
+  white-space: nowrap;
+}
+
+.careers-subtitle {
+  margin-bottom: 50px;
+  font-size: 1.5rem;
+  white-space: nowrap;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  width: max-content;
+}
+
+.careers-portfolio-q1, .careers-portfolio-q3 {
+  font-weight: bold;
+  font-size: 2.5rem;
+}
+
+.careers-portfolio-q2 {
+  font-weight: bold;
+  font-size: 2rem;
+}
+
+.careers-footer-text {
+  font-weight: 500;
+  font-size: 3rem;
+  margin-bottom: 5px;
+}
+
+.careers-footer-link {
+  font-weight: 1000;
+  font-size: 3rem;
+  color: #e31b23;
+  text-decoration: none;
+  letter-spacing: 0.1em;
+}
+
+.show-us-block-height {
+  height: 70px;
+}
+
+/* Hollow Brutalist Roles Layout */
+.hollow-roles-container {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+  gap: 1.5vw;
+  width: 100%;
+  margin-bottom: 60px;
+  overflow: visible;
+}
+.hollow-role-item {
+  font-family: 'Anton', 'Impact', sans-serif;
+  font-size: clamp(10px, 2.5vw, 3rem);
+  text-transform: uppercase;
+  color: transparent;
+  -webkit-text-stroke: clamp(0.5px, 0.2vw, 1.5px) rgba(255, 255, 255, 0.5);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  line-height: 1;
+  white-space: nowrap;
+}
+.hollow-role-item:hover {
+  color: #e31b23;
+  -webkit-text-stroke: 0px transparent;
+  transform: translateY(-5px);
+}
+.hollow-role-slash {
+  font-family: 'Anton', 'Impact', sans-serif;
+  font-size: clamp(10px, 2.5vw, 3rem);
+  color: rgba(255, 255, 255, 0.2);
+}
+
+/* Tablet adjustments */
+@media (max-width: 1024px) {
+  .careers-headline-1 {
+    margin-left: 0;
+    text-align: center;
+    font-size: 3.5rem;
+  }
+  .careers-headline-2 {
+    margin-left: 0;
+    text-align: center;
+    font-size: 2rem;
+    white-space: normal;
+  }
+  .careers-subtitle {
+    white-space: normal;
+    width: 100%;
+    text-align: center;
+    font-size: 1.2rem;
+  }
+  .careers-portfolio-q1, .careers-portfolio-q3 {
+    font-size: 2rem;
+  }
+  .careers-portfolio-q2 {
+    font-size: 1.8rem;
+  }
+  .show-us-block-height {
+    height: 40px;
+  }
+}
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+  .hollow-roles-container {
+    flex-direction: column;
+    gap: 4vw;
+  }
+  .hollow-role-item {
+    font-size: 13vw;
+    -webkit-text-stroke: 1.5px rgba(255, 255, 255, 0.5);
+  }
+  .hollow-role-slash {
+    display: none;
+  }
+  .careers-hero-img {
+    width: 240px;
+    margin-top: -10px;
+    margin-bottom: 24px;
+  }
+
+  .careers-headline-1 {
+    font-size: 2.5rem;
+  }
+  .careers-headline-2 {
+    font-size: 1.5rem;
+  }
+  .careers-subtitle {
+    font-size: 1.1rem;
+  }
+  .careers-portfolio-q1, .careers-portfolio-q3 {
+    font-size: 1.4rem;
+  }
+  .careers-portfolio-q2 {
+    font-size: 1.2rem;
+  }
+  .careers-footer-text {
+    font-size: 2rem;
+  }
+  .careers-footer-link {
+    font-size: 2rem;
+  }
+  .show-us-block-height {
+    height: 20px;
+  }
+}

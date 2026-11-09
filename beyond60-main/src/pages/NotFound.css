@@ -1,0 +1,147 @@
+/* ==========================================================================
+   EasySeller-Inspired 404 Page (Clean / No Scanner)
+   ========================================================================== */
+
+.easyseller-404-container {
+  position: relative;
+  width: 100vw;
+  min-height: 100vh;
+  background-color: #000000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  color: #ffffff;
+  padding: 80px 20px;
+  box-sizing: border-box;
+}
+
+.easyseller-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  max-width: 700px;
+}
+
+/* 404 Barcode Graphic Container */
+.scannable-graphic {
+  position: relative;
+  padding: 30px 50px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 16px;
+  background: rgba(15, 15, 15, 0.7);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  margin-bottom: 36px;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.4s ease, box-shadow 0.4s ease;
+  user-select: none;
+}
+
+.scannable-graphic:hover {
+  transform: translateY(-4px);
+  border-color: rgba(255, 42, 42, 0.6);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.5), 0 0 25px rgba(255, 42, 42, 0.2);
+}
+
+.barcode-badge {
+  font-family: 'SF Mono', 'Courier New', Courier, monospace;
+  font-size: 0.7rem;
+  letter-spacing: 2px;
+  color: rgba(255, 255, 255, 0.5);
+  margin-bottom: 12px;
+}
+
+.barcode-bars {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  gap: 3px;
+  height: 40px;
+  opacity: 0.45;
+  transition: opacity 0.3s ease;
+}
+
+.scannable-graphic:hover .barcode-bars {
+  opacity: 0.85;
+}
+
+.bar {
+  background-color: #ffffff;
+  display: inline-block;
+  height: 100%;
+}
+
+.bar-1 { width: 1px; }
+.bar-2 { width: 3px; }
+.bar-3 { width: 2px; }
+.bar-4 { width: 4px; }
+.bar-5 { width: 1px; height: 75%; }
+
+.scannable-number {
+  font-family: 'Anton', 'Outfit', sans-serif;
+  font-size: clamp(5rem, 15vw, 8.5rem);
+  line-height: 0.9;
+  letter-spacing: 4px;
+  margin: 16px 0 0;
+  color: #ffffff;
+}
+
+.easyseller-title {
+  font-family: 'Outfit', 'Inter', sans-serif;
+  font-size: clamp(1.6rem, 4vw, 2.4rem);
+  font-weight: 500;
+  margin: 0 0 10px;
+  color: #ffffff;
+  letter-spacing: -0.5px;
+}
+
+.easyseller-subtitle {
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.6);
+  max-width: 440px;
+  margin: 0 auto 36px;
+  line-height: 1.5;
+}
+
+/* EasySeller Rounded Pill Button */
+.easyseller-button {
+  display: inline-block;
+  background-color: #ff2a2a;
+  color: #ffffff !important;
+  font-family: 'Outfit', 'Inter', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  padding: 14px 42px;
+  border-radius: 9999px;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 4px 20px rgba(255, 42, 42, 0.35);
+  text-decoration: none;
+}
+
+.easyseller-button:hover {
+  background-color: #ffffff;
+  color: #000000 !important;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(255, 255, 255, 0.25);
+}
+
+.easyseller-button:active {
+  transform: translateY(0) scale(0.98);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .scannable-graphic {
+    padding: 24px 30px;
+  }
+  .barcode-bars {
+    height: 30px;
+  }
+  .easyseller-button {
+    padding: 12px 32px;
+    font-size: 0.875rem;
+  }
+}
